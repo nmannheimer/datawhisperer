@@ -4,17 +4,27 @@ This is the main interface for Data Whisperer
 
 """
 
+# general
 import numpy as np
 import pandas as pd
 
-from whisper.util import parse_arguments
+# utilities
+from whisper.util import parse_arguments, identify_cols
+from tkinter import filedialog
+
+# models
 from whisper.model import VizClassifier
+
 
 def main(args):
     args = parse_arguments(args)
 
     # loader loads dataset
-    df = pd.read_csv(filepath_or_buffer=args.filepath)
+    source = filedialog.askopenfilename()
+    data = pd.read_csv(source)
+
+    # more preprocessing
+    dimensions, measures = identify_cols(data)
 
     # processing of dataset
     X = np.zeros(shape=(5, 5))
