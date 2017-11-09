@@ -35,7 +35,7 @@ def main(args):
             viz_type = VizClassifier.get_viz_type(y_hat)
 
     # display visualization
-    
+    print('hi')
 
 if __name__ == '__main__':
     main()
